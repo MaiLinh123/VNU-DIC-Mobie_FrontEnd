@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'package:vnu_dic/controllers/authenticate_controller.dart';
 import 'package:vnu_dic/share/loading.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 
 class SignInScreen extends StatefulWidget {
@@ -33,10 +34,9 @@ class _SignInScreenState extends State<SignInScreen> {
     final _appBar = AppBar(
       /*elevation: 0.0,*/
       title: Text('VNU_DIC'),
-
     );
 
-    final _emailField = TextFormField(
+    /*final _emailField = TextFormField(
       decoration: InputDecoration(
         hintText: 'Email',
       ),
@@ -47,9 +47,47 @@ class _SignInScreenState extends State<SignInScreen> {
         }
         return null;
       },
+    );*/
+
+    final _emailField = SizedBox(
+      child: FormBuilderTextField(
+        controller: _emailController,
+          name: "email",
+          validator: (value) {
+            if (value.isEmpty || !value.contains('@')) {
+            return "Please enter the correct email";
+            }
+            return null;
+            },
+          decoration: InputDecoration(
+          prefixIcon: Icon(
+            Icons.account_circle,
+            color: Colors.green[400],
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(25.0),
+            borderSide: BorderSide(
+              color: Colors.green[400],
+              width: 2.0,
+            )
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(25.0),
+            borderSide: BorderSide(
+              color: Colors.green[400],
+              width: 2.0,
+            )
+          ),
+          labelText: "Email",
+          hintText: "Enter email",
+          alignLabelWithHint: false,
+        )
+
+      )
+
     );
 
-    final _passwordField = TextFormField(
+    /*final _passwordField = TextFormField(
       obscureText: true,
       controller: _passwordController,
       decoration: InputDecoration(
@@ -59,6 +97,44 @@ class _SignInScreenState extends State<SignInScreen> {
         if (value.isEmpty) return "Please enter the password";
         return null;
       },
+    );*/
+
+    final _passwordField  = SizedBox(
+        child: FormBuilderTextField(
+            controller: _emailController,
+            name: "password",
+            validator: (value) {
+              if (value.isEmpty || !value.contains('@')) {
+                return "Please enter the correct password";
+              }
+              return null;
+            },
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.account_circle,
+                color: Colors.green[400],
+              ),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.green[400],
+                    width: 2.0,
+                  )
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.green[400],
+                    width: 2.0,
+                  )
+              ),
+              labelText: "Password",
+              hintText: "Enter password",
+              alignLabelWithHint: false,
+            )
+
+        )
+
     );
 
     final _signInButton = Row(
