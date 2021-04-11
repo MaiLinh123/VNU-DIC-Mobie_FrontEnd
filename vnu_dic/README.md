@@ -1,6 +1,6 @@
 # vnu_dic
 
-MobieApp_VNUDIC
+vnu_dic mobie app
 
 ## Getting Started
 
