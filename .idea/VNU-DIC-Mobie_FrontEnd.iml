@@ -17,6 +17,9 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />
+      <excludeFolder url="file://$MODULE_DIR$/uet_dic/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/uet_dic/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/uet_dic/build" />
       <excludeFolder url="file://$MODULE_DIR$/vnu_dic/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/vnu_dic/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/vnu_dic/build" />
