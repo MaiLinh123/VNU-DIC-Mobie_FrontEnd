@@ -1,9 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:uet_dic/controllers/authenticate_controller.dart';
 import 'package:uet_dic/share/loading.dart';
+
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class SignUpScreen extends StatefulWidget {
   final Function toggleView;
@@ -31,10 +34,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
     final _appBar = AppBar(
       elevation: 0.0,
       title: Text('Sign up'),
+      backgroundColor: Colors.green[400],
     );
-    final _nameField = TextFormField(
+    /*final _nameField = TextFormField(
       decoration: InputDecoration(
         hintText: 'Name',
+        border:
       ),
       controller: _nameController,
       validator: (value) {
@@ -43,8 +48,45 @@ class _SignUpScreenState extends State<SignUpScreen> {
         return null;
       },
     );
+    */
+    final _nameField = SizedBox(
+        child: FormBuilderTextField(
+            name: "name",
+            controller: _nameController,
+            validator: (value) {
+              if (value.isEmpty)
+                return "Please enter your name";
+              return null;
+            },
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.account_circle,
+                color: Colors.green[400],
+              ),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.green[400],
+                    width: 2.0,
+                  )
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.green[400],
+                    width: 2.0,
+                  )
+              ),
+              labelText: "Name",
+              hintText: "Enter name",
+              alignLabelWithHint: false,
+            )
 
-    final _emailField = TextFormField(
+        )
+
+    );
+
+    /*final _emailField = TextFormField(
       decoration: InputDecoration(
         hintText: 'Email',
       ),
@@ -55,9 +97,47 @@ class _SignUpScreenState extends State<SignUpScreen> {
         else if (!value.contains('@')) return "Please enter the correct email";
         return null;
       },
+    );*/
+
+    final _emailField = SizedBox(
+        child: FormBuilderTextField(
+            name: "email",
+            controller: _emailController,
+            validator: (value) {
+              if (value.isEmpty)
+                return "Please enter the email";
+              else if (!value.contains('@')) return "Please enter the correct email";
+              return null;
+            },
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.account_circle,
+                color: Colors.green[400],
+              ),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.green[400],
+                    width: 2.0,
+                  )
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.green[400],
+                    width: 2.0,
+                  )
+              ),
+              labelText: "Email",
+              hintText: "Enter email",
+              alignLabelWithHint: false,
+            )
+
+        )
+
     );
 
-    final _passwordField = TextFormField(
+    /*final _passwordField = TextFormField(
       obscureText: true,
       decoration: InputDecoration(
         hintText: 'Password',
@@ -68,6 +148,43 @@ class _SignUpScreenState extends State<SignUpScreen> {
           return "Please enter a password more than 6 characters";
         return null;
       },
+    );*/
+
+    final _passwordField = SizedBox(
+        child: FormBuilderTextField(
+            name: "email",
+            controller: _passwordController,
+            validator: (value) {
+              if (value.length < 6)
+                return "Please enter a password more than 6 characters";
+              return null;
+            },
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.account_circle,
+                color: Colors.green[400],
+              ),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.green[400],
+                    width: 2.0,
+                  )
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.green[400],
+                    width: 2.0,
+                  )
+              ),
+              labelText: "Password",
+              hintText: "Enter password",
+              alignLabelWithHint: false,
+            )
+
+        )
+
     );
 
     final _errorNotify = Text(
@@ -79,7 +196,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
         width: double.infinity,
         child: ElevatedButton(
             child: Text('Sign up'),
-            style: ElevatedButton.styleFrom(primary: Colors.green),
+            style: ElevatedButton.styleFrom(
+                primary: Colors.green[400],//background
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25.0)),
+                padding: EdgeInsets.all(15.0),
+
+            ),
             onPressed: () async {
               // validate return true if the form is correct, false if other
               if (_formKey.currentState.validate()) {
@@ -118,7 +241,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         Text('Already have account?'),
         TextButton(
           onPressed: () { widget.toggleView(); },
-          child: Text('Sign in', style: TextStyle(color: Colors.blue, fontSize: 16)),
+          child: Text('Sign in', style: TextStyle(color: Colors.green[400], fontSize: 16)),
         ),
       ],
     );

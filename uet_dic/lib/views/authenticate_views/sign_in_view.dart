@@ -34,6 +34,7 @@ class _SignInScreenState extends State<SignInScreen> {
     final _appBar = AppBar(
       /*elevation: 0.0,*/
       title: Text('VNU_DIC'),
+      backgroundColor: Colors.green[400],
     );
 
     /*final _emailField = TextFormField(
@@ -142,6 +143,13 @@ class _SignInScreenState extends State<SignInScreen> {
       children: [
         ElevatedButton(
             child: Text('Sign in'),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.green[400],//background
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0)),
+              padding: EdgeInsets.all(15.0),
+
+            ),
             onPressed: () async {
               if (_formKey.currentState.validate()) {
                 setState(() {
@@ -169,6 +177,13 @@ class _SignInScreenState extends State<SignInScreen> {
         // start now button
         ElevatedButton(
             child: Text('Start now'),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.green[400],//background
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0)),
+              padding: EdgeInsets.all(15.0),
+
+            ),
             onPressed: () async {
               setState(() {
                 this._loading = true;
