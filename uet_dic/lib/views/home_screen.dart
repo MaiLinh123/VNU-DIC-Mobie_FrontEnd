@@ -36,7 +36,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uet_dic/controllers/authenticate_controller.dart';
-import 'package:uet_dic/views/search.dart';
+import 'package:uet_dic/views/HomeComponent/search.dart';
 
 // class HomeScreen extends StatelessWidget {
 //
@@ -83,6 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         brightness: Brightness.light,
         elevation: 0,
+        backgroundColor: Colors.green[400],
         leading: IconButton(
           icon: Icon(
             Icons.menu,
@@ -96,10 +97,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
 
       ),
-      body: MaterialApp(
-          theme: ThemeData(primarySwatch: Colors.blue), home:Search()
-      ),
-
+      /*body: MaterialApp(
+          theme: ThemeData(
+              primarySwatch: Colors.green),
+              home:Search(),
+      ),*/
+      body: Search(),
     );
   }
 }

@@ -16,6 +16,7 @@ class UDictApp extends StatelessWidget {
       child: MaterialApp(
         // wrapper choose Home() or Authenticate()
         home: ScreenWrapper(),
+        debugShowCheckedModeBanner: false,
       ),
     );
   }
