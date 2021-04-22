@@ -66,18 +66,55 @@ class _SearchState extends State<Search> {
               SizedBox(
                 width: 400.0,
                 height: 100.0,
-                child: DecoratedBox(
-                  decoration: const BoxDecoration(
-                      color: Colors.red
+                child: ColoredBox(
+                    color: Colors.amber,
+                    child: newText(
+                      'EXPLORE',
+                      style: TextStyle(
+                        fontFamily: 'Arial',
+                        fontSize: 18,
+                        color: Colors.white,
+                        height: 1,
+                      ),
+                      textAlign: TextAlign.center,
+                    )
+                )
+              ),SizedBox(height: 10),
+              SizedBox(
+                width: 400.0,
+                height: 100.0,
+                child: ElevatedButton(
+                  //style: Colors.green[400],
+                  child: new Text(
+                    'EXPLORE',
+                    textAlign: TextAlign.right,
                   ),
-                  child: new RaisedButton(
-                    child: new Text(
-                        'EXPLORE',
-                        textAlign: TextAlign.right,
-                    ),
-                    onPressed: (){},
+                  onPressed: (){},
+                ),
+              ),SizedBox(height: 10),
+              SizedBox(
+                width: 400.0,
+                height: 100.0,
+                child: ElevatedButton(
+                  //style: Colors.green[400],
+                  child: new Text(
+                    'PLAY',
+                    textAlign: TextAlign.right,
                   ),
-              ),
+                  onPressed: (){},
+                ),
+              ),SizedBox(height: 10),
+              SizedBox(
+                width: 400.0,
+                height: 100.0,
+                child: ElevatedButton(
+                  //style: Colors.green[400],
+                  child: new Text(
+                    'MONOPOLY',
+                    textAlign: TextAlign.right,
+                  ),
+                  onPressed: (){},
+                ),
               )
             ],
         ),
