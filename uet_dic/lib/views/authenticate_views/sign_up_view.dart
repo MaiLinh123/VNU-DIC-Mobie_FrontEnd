@@ -60,7 +60,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             },
             decoration: InputDecoration(
               prefixIcon: Icon(
-                Icons.account_circle,
+                Icons.vpn_key,
                 color: Colors.green[400],
               ),
               enabledBorder: OutlineInputBorder(

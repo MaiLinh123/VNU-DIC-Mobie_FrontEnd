@@ -33,7 +33,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
     final _appBar = AppBar(
       /*elevation: 0.0,*/
-      title: Text('VNU_DIC'),
+      title: Text('Sign in'),
       backgroundColor: Colors.green[400],
     );
 
@@ -112,7 +112,7 @@ class _SignInScreenState extends State<SignInScreen> {
             },
             decoration: InputDecoration(
               prefixIcon: Icon(
-                Icons.account_circle,
+                Icons.vpn_key,
                 color: Colors.green[400],
               ),
               enabledBorder: OutlineInputBorder(
@@ -215,7 +215,13 @@ class _SignInScreenState extends State<SignInScreen> {
         widget.toggleView();
       },
       child: Text('Create New Account'),
-      style: ElevatedButton.styleFrom(primary: Colors.green),
+      style: ElevatedButton.styleFrom(
+        primary: Colors.green[400],//background
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0)),
+        padding: EdgeInsets.all(15.0),
+
+      ),
     );
 
     return _loading

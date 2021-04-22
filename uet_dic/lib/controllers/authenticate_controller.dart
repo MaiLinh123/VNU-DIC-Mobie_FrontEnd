@@ -8,8 +8,8 @@ import 'package:uet_dic/models/user_model.dart';
 
 class AuthenticateController with ChangeNotifier{
   User _user;
-  String _message;
-  int _statusCode;
+  String _message; // the message response from server
+  int _statusCode; // status code
 
   AuthenticateController() {
     this._user = null;
@@ -43,7 +43,7 @@ class AuthenticateController with ChangeNotifier{
     var url = Uri.parse('http://192.168.2.102:3333/signin');
     var response = await http.post(url, body: {'email': _email, 'password': _password});
     this._statusCode = response.statusCode;
-    if(response.statusCode == 400) {
+    if(response.statusCode != 200) {
       this._user = null;
       this._message = response.body;
     } else {
@@ -63,7 +63,7 @@ class AuthenticateController with ChangeNotifier{
     });
     this._statusCode = response.statusCode;
     this._message = response.body;
-    return response.statusCode;
+    return this._statusCode;
   }
 
   // sign out
