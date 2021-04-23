@@ -73,8 +73,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Card(
               child: ListTile(
-                title: Text('Home', style: TextStyle(fontWeight: FontWeight.bold)),
-                leading: Icon(Icons.home),
+                title: Text('Setting', style: TextStyle(fontWeight: FontWeight.bold)),
+                leading: Icon(Icons.settings),
                 onTap: () {
                   // some thinghere
                 },
@@ -83,8 +83,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Card(
               child: ListTile(
-                title: Text('Item 2', style: TextStyle(fontWeight: FontWeight.bold)),
-                leading: Icon(Icons.wb_sunny),
+                title: Text('Profile', style: TextStyle(fontWeight: FontWeight.bold)),
+                leading: Icon(Icons.account_circle),
                 onTap: () {
                   // Update the state of the app.
                   // ...
@@ -120,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         title: Text('Home'),
       ),
-      body: Padding(
+      /*body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SingleChildScrollView(
             child: Column(
@@ -141,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       //   height: 20,
                       // ),
 
-                      Container(
+                      *//*Container(
                         padding: EdgeInsets.all(5),
                         decoration: BoxDecoration(
                             color: Color.fromRGBO(244, 243, 243,1),
@@ -161,11 +161,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               hintStyle:
                               TextStyle(color: Colors.grey, fontSize: 15)),
                         ),
-                      ),
+                      ),*//*
                     ],
                   ),
                 ),
-                /*ElevatedButton(
+                *//*ElevatedButton(
                 child: Text('EXPLORE'),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.green[400],//background
@@ -173,12 +173,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(2.0)),
                   padding: EdgeInsets.all(15.0),
                 ), onPressed: () { },
-              ),*/
+              ),*//*
               ],
             ),
           ),
-        ),
-      //body: Search(),
+        ),*/
+      body: Search(),
     );
   }
 }

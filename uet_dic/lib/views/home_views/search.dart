@@ -13,14 +13,14 @@ class _SearchState extends State<Search> {
       padding: const EdgeInsets.all(8.0),
       child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
+            /*crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,*/
             children: <Widget>[
               Container(
                 padding: EdgeInsets.all(20.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  /*crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,*/
                   children: <Widget>[
                     // Text(
                     //   'VNU-DIC',
@@ -65,55 +65,64 @@ class _SearchState extends State<Search> {
               ),*/
               SizedBox(
                 width: 400.0,
-                height: 100.0,
-                child: ColoredBox(
-                    color: Colors.amber,
-                    child: newText(
-                      'EXPLORE',
-                      style: TextStyle(
-                        fontFamily: 'Arial',
-                        fontSize: 18,
-                        color: Colors.white,
-                        height: 1,
-                      ),
-                      textAlign: TextAlign.center,
-                    )
-                )
-              ),SizedBox(height: 10),
-              SizedBox(
-                width: 400.0,
-                height: 100.0,
+                height: 50.0,
                 child: ElevatedButton(
                   //style: Colors.green[400],
-                  child: new Text(
-                    'EXPLORE',
-                    textAlign: TextAlign.right,
+                  child: RichText(
+                    textAlign: TextAlign.left,
+                    text: TextSpan(
+                      children: [
+                        WidgetSpan(
+                          child: Icon(
+                              Icons.account_box_rounded,
+                              size: 20,
+                              color: Colors.black),
+                        ),
+                        TextSpan(
+                            text: ' Từ của bạn',
+                            style: TextStyle(
+                                fontSize: 20,/*fontWeight: FontWeight.bold,*/
+                                color: Colors.black,
+                                ),
+                        ),
+                      ],
+                    ),
+                    //textAlign: TextAlign.right,
                   ),
                   onPressed: (){},
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.white),
+                  ),
                 ),
               ),SizedBox(height: 10),
               SizedBox(
                 width: 400.0,
-                height: 100.0,
+                height: 50.0,
                 child: ElevatedButton(
                   //style: Colors.green[400],
                   child: new Text(
-                    'PLAY',
+                    'Từ đã tra',
                     textAlign: TextAlign.right,
                   ),
                   onPressed: (){},
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.green[400]),
+                  ),
                 ),
               ),SizedBox(height: 10),
               SizedBox(
                 width: 400.0,
-                height: 100.0,
+                height: 50.0,
                 child: ElevatedButton(
                   //style: Colors.green[400],
                   child: new Text(
-                    'MONOPOLY',
+                    'Từ vựng thông dụng',
                     textAlign: TextAlign.right,
                   ),
                   onPressed: (){},
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.green[400]),
+                  ),
                 ),
               )
             ],

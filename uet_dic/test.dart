@@ -1,3 +1,4 @@
+/*
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -9,4 +10,4 @@ void main() async {
   var response = await http.get(url, body: {}, Http);
   final Map parsed = json.decode(response.body);
   print('$parsed, ${response.statusCode}');
-}
+}*/
