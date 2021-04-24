@@ -94,7 +94,7 @@ class _SearchState extends State<Search> {
                     backgroundColor: MaterialStateProperty.all(Colors.white),
                   ),
                 ),
-              ),SizedBox(height: 10),
+              ),SizedBox(height: 20),
               SizedBox(
                 width: 400.0,
                 height: 50.0,
@@ -109,16 +109,15 @@ class _SearchState extends State<Search> {
                     backgroundColor: MaterialStateProperty.all(Colors.green[400]),
                   ),
                 ),
-              ),SizedBox(height: 10),
+              ),SizedBox(height: 20),
               SizedBox(
                 width: 400.0,
                 height: 50.0,
                 child: ElevatedButton(
                   //style: Colors.green[400],
-                  child: new Text(
-                    'Từ vựng thông dụng',
-                    textAlign: TextAlign.right,
-                  ),
+                  child: new Container(color: Colors.green[400], child: new Column(children: <Widget>[
+                    new Align(alignment: Alignment.bottomLeft, child: new Text("Từ vựng thông dụng")),
+                  ],)),
                   onPressed: (){},
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.green[400]),

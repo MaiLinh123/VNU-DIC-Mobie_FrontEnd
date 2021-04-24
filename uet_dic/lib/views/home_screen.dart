@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:uet_dic/controllers/authenticate_controller.dart';
 import 'package:uet_dic/views/home_views/search.dart';
 
+import 'home_views/profile.dart';
+
 // class HomeScreen extends StatelessWidget {
 //
 //   @override
@@ -178,7 +180,15 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),*/
-      body: Search(),
+      body:
+          Column(
+            children: <Widget>[
+              Search(),
+              SizedBox(height: 50),
+              Profile(),
+            ]
+          )
+
     );
   }
 }
