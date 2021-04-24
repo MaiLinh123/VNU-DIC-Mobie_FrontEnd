@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uet_dic/controllers/authenticate_controller.dart';
 import 'package:uet_dic/views/home_views/search.dart';
+import 'package:uet_dic/views/profile.dart';
+import 'package:uet_dic/views/setting.dart';
 
 import 'home_views/profile.dart';
 
@@ -68,7 +70,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 leading: Icon(Icons.home),
                 title: Text('Home', style: TextStyle(fontWeight: FontWeight.bold)),
                 onTap: () {
-                  // some thinghere
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => HomeScreen()),
+                  );
                 },
               ),
               margin: const EdgeInsets.only(left: 12, right: 12, bottom: 10),
@@ -78,8 +84,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: Text('Setting', style: TextStyle(fontWeight: FontWeight.bold)),
                 leading: Icon(Icons.settings),
                 onTap: () {
-                  // some thinghere
-                },
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SettingsPage()),
+                  );
+                }
               ),
               margin: const EdgeInsets.only(left: 12, right: 12, bottom: 10),
             ),
@@ -88,8 +98,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: Text('Profile', style: TextStyle(fontWeight: FontWeight.bold)),
                 leading: Icon(Icons.account_circle),
                 onTap: () {
-                  // Update the state of the app.
-                  // ...
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Profile()),
+                  );
                 },
               ),
               margin: const EdgeInsets.only(left: 12, right: 12, bottom: 10),
@@ -180,15 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),*/
-      body:
-          Column(
-            children: <Widget>[
-              Search(),
-              SizedBox(height: 50),
-              Profile(),
-            ]
-          )
-
+      body:Search(),
     );
   }
 }
