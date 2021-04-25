@@ -24,22 +24,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ca60929-407d-4f68-be98-3412431dfcf9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/android/app/src/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/controllers/authenticate_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/controllers/authenticate_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/models/user_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/models/user_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/authenticate_view.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/sign_in_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/sign_in_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/sign_up_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/sign_up_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/home_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/home_views/search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/home_components/search.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/wrapper_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/wrapper_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
