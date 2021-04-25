@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: ListTile(
               leading: Icon(Icons.home),
               title:
-                  Text('Home', style: TextStyle(fontWeight: FontWeight.bold)),
+              Text('Home', style: TextStyle(fontWeight: FontWeight.bold)),
               onTap: () {
                 Navigator.pop(context);
               },
