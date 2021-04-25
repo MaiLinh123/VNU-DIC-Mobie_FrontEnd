@@ -19,16 +19,7 @@ class _SearchState extends State<Search> {
               Container(
                 padding: EdgeInsets.all(20.0),
                 child: Column(
-                  /*crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,*/
                   children: <Widget>[
-                    // Text(
-                    //   'VNU-DIC',
-                    //   style: TextStyle(color: Colors.blue, fontSize: 35, fontWeight: FontWeight.bold),
-                    // ),
-                    // SizedBox(
-                    //   height: 20,
-                    // ),
 
                     Container(
                       padding: EdgeInsets.all(5),

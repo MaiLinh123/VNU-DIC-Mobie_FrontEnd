@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uet_dic/controllers/authenticate_controller.dart';
+import 'package:uet_dic/views/authenticate_views/sign_in_view.dart';
 
-import 'authenticate_views/authenticate_view.dart';
 import 'home_screen.dart';
 
 class ScreenWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('wrapper');
+    final _authenticateController =  Provider.of<AuthenticateController>(context, listen: true);
+    if(_authenticateController.currentUser == null) _authenticateController.signInWithToken();
     // return home or authenticate
-    return Provider.of<AuthenticateController>(context, listen: true).currentUser == null ? AuthenticateScreen() : HomeScreen();
+    return _authenticateController.currentUser == null ? SignInScreen() : HomeScreen();
   }
 }

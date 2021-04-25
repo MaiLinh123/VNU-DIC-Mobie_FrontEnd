@@ -1,24 +1,21 @@
-import 'dart:convert';
-
 class User {
   String email;
-  String password;
-  Map information;
+  String username;
+  List words;
 
-  User({this.email, this.password, this.information}) {
-    print('=====> Create user successful : ${this.information['name']}');
+  User({this.username, this.email, this.words}) {
+    print('Create user successful : ${this.username}');
   }
 
   factory User.fromJson(Map<String, dynamic> partedJson) {
+    print(partedJson.toString());
     return User(
+        username: partedJson['username'],
         email : partedJson['email'],
-        password: partedJson['password'],
-        information: partedJson['information']
+        words: partedJson['words']
     );
   }
-  void userInformation() {
-    print('email: ${this.email}');
-    print('password: ${this.password}');
-    print('information: ${this.information}');
+  String userInformation() {
+    return 'email: ${this.email} \n username: ${this.username} \n words: ${this.words}';
   }
 }
