@@ -15,6 +15,7 @@ class User {
         words: partedJson['words']
     );
   }
+
   String userInformation() {
     return 'email: ${this.email} \n username: ${this.username} \n words: ${this.words}';
   }

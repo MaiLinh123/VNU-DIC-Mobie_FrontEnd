@@ -74,7 +74,6 @@ class Profile extends StatelessWidget {
                       child: Text(
                         'Others',
                         style: TextStyle(
-                            fontFamily: 'NotoSansJP',
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
                             color: Color(0xFF999999)),
