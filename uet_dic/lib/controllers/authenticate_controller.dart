@@ -36,7 +36,7 @@ class AuthenticateController with ChangeNotifier {
   Future<Map<String, dynamic>> signInAnonymously() async {
     try {
       await InternetAddress.lookup('example.com');
-      this._user = new User(email: '', username: 'anonymousUser', words: []);
+      this._user = new User(username: 'anonymousUser',email: '',  words: []);
       this._message = "Sign in anonymously";
       this._statusCode = 200;
       print('Sign in anonymously');

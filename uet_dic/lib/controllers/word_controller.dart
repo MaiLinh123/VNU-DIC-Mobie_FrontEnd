@@ -72,14 +72,15 @@ class WordController with ChangeNotifier{
 
     if(this._recentWords == null) this._recentWords = [];
 
-    if(wordSearch != null) {
-      for(String word in this._recentWords) {
-        if(word == wordSearch) return;
+      if(wordSearch != null) {
+        for(String word in this._recentWords) {
+          if(word == wordSearch) return;
+        }
+        if(this._recentWords.length > 20) this._recentWords.removeAt(0);
+        this._recentWords.add(wordSearch);
+        prefs.setStringList('recentWords', this._recentWords);
+        this.notifyListeners();
       }
-      if(this._recentWords.length > 20) this._recentWords.removeAt(0);
-      this._recentWords.add(wordSearch);
-      prefs.setStringList('recentWords', this._recentWords);
-      this.notifyListeners();
-    }
+    this.notifyListeners();
   }
 }

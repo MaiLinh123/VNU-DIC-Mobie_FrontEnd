@@ -7,7 +7,7 @@ class AppLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: SpinKitCircle(
+      child: SpinKitDoubleBounce(
         color: Colors.green[400],
         size: 50.0,
       ),

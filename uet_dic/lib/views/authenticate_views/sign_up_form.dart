@@ -1,22 +1,17 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:keyboard_avoider/keyboard_avoider.dart';
 import 'package:provider/provider.dart';
 import 'package:uet_dic/controllers/authenticate_controller.dart';
-import 'package:uet_dic/share/app_background.dart';
-import 'package:uet_dic/share/app_card.dart';
 import 'package:uet_dic/share/app_loading.dart';
 
-import 'authShare.dart';
+import 'auth_share.dart';
 
-class SignUpScreen extends StatefulWidget {
+class SignUpForm extends StatefulWidget {
   @override
-  _SignUpScreenState createState() => _SignUpScreenState();
+  _SignUpFormState createState() => _SignUpFormState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignUpFormState extends State<SignUpForm> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -24,6 +19,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
 
   bool _loading = false;
+  bool _isSignUp = false;
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +87,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   _nameController.text,
                   _emailController.text,
                   _passwordController.text,
-                  _passwordConfirmController.text);
+                  _passwordConfirmController.text,
+              );
           if (result['statusCode'] != 200) {
             setState(() {
               print('Error sign up: ${result['message']}');
@@ -140,23 +137,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     );
 
-    final _signUpBody = AppBackGround(
-      aboveBackground: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 50, 20, 0),
-        child: KeyboardAvoider(
-          child: AppCard(
-              child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
-                  child: _signUpForm),
-          ),
-        ),
-      ),
-    );
-
-    return Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor: Colors.white,
-        body: _signUpBody,
-    );
+    return _signUpForm;
   }
 }
