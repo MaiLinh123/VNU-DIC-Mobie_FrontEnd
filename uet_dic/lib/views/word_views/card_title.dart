@@ -12,6 +12,7 @@ class CardTitle extends StatefulWidget {
 
   CardTitle({this.wordId, this.title, this.subTitle, this.saved, this.audio});
 
+
   @override
   _CardTitleState createState() => _CardTitleState();
 }

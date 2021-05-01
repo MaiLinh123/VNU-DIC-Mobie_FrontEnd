@@ -31,27 +31,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ca60929-407d-4f68-be98-3412431dfcf9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/uet_dic/lib/share/app_background.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uet_dic/lib/share/app_card.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/auth_share.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uet_dic/lib/views/home_components/home_drawer.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uet_dic/lib/views/home_components/home_history_words.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uet_dic/lib/views/home_components/home_search.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uet_dic/lib/views/word_views/card_contents.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uet_dic/lib/views/word_views/card_title.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uet_dic/lib/views/word_views/word_details_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uet_dic/android/settings_aar.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/authShare.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/controllers/authenticate_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/controllers/authenticate_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/controllers/word_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/controllers/word_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/models/user_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/models/user_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/share/app_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/share/app_api.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/share/app_loading.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/share/app_loading.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/sign_in_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/sign_in_form.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/sign_up_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/sign_up_form.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/wrapper_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/wrapper_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/home_components/home_history_words.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/home_components/home_history_words.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/home_components/home_search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/home_components/home_search.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/word_views/card_contents.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/word_views/card_contents.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/word_views/card_title.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/word_views/card_title.dart" afterDir="false" />
     </list>
     <list id="28465e11-6d89-4f97-9e8d-00170fac236b" name="Revert &quot;find word and history word complete&quot;" comment="Revert &quot;find word and history word complete&quot;&#10;&#10;This reverts commit 73da92b9" />
     <option name="SHOW_DIALOG" value="false" />
@@ -134,7 +122,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/long" />
+                        <option value="long" />
                       </list>
                     </value>
                   </entry>
