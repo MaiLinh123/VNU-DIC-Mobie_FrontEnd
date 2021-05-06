@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -10,77 +9,76 @@ import 'package:uet_dic/share/app_loading.dart';
 
 class WordController with ChangeNotifier{
 
-  List _searchWords;
   List<String> _recentWords;
   String _message;
   int _statusCode;
 
   WordController() {
-    this._searchWords = [];
     this._recentWords = [];
-    updateRecentWords(null);
+    this.getRecentWords();
     this._message = '';
     this._statusCode = 400;
   }
 
-  List get recentWord {
+  List<String> get recentWord {
     return this._recentWords;
   }
 
-  Future<Map<String, dynamic>> getWord(String wordSearch) async {
-    wordSearch = _validateBeforeSearch(wordSearch);
+  Future<Map<String, dynamic>> queryWord(String wordSearch) async {
+    List<dynamic> _queriedWordList = [];
     try {
-      await InternetAddress.lookup('example.com');
+      wordSearch = wordSearch.trim().toLowerCase();
+      print('Query: $wordSearch');
 
-      final url = Uri.parse('${api.wordApi}$wordSearch');
-      final response = await http.get(url).timeout(const Duration(seconds: 3));
+      final url = Uri.parse('${api.wordQueryApi}$wordSearch');
+      final response = await http.get(url).timeout(const Duration(seconds: 2));
 
-      this._searchWords = json.decode(response.body)['words'];
+      _queriedWordList = json.decode(response.body)['words'];
 
-      if(this._searchWords.isEmpty) {
+      if (_queriedWordList.isEmpty) {
         this._message = "Word not found!";
         this._statusCode = 400;
         print('Word not found!');
       } else {
         this._message = "Word gets success!";
         this._statusCode = response.statusCode;
-        this.updateRecentWords(wordSearch);
         print('Word gets success!');
+        this.updateRecentWords(
+          word: wordSearch,
+          phonetic: _queriedWordList[0]['phonetics'],
+        );
       }
-    } on TimeoutException catch (err) {
-      print('Time out error, something wrong: $err');
-      this._message = 'Timeout Error! Try later.';
-      this._statusCode = 400;
-    } on SocketException catch (err) {
-      print('Time out error, something wrong: $err');
-      this._message = 'Network Error! Check your internet.';
-      this._statusCode = 400;
     } catch (err) {
-      print('Error, something wrong: $err');
-      this._message = 'Error! Try again.';
+      this._message = 'Check your internet or try later';
       this._statusCode = 400;
+      print('Error: $err');
     }
     showToast(this._message, this._statusCode);
-    return {'words' : this._searchWords, 'statusCode': this._statusCode, 'message':this._message};
+    return {'words' : _queriedWordList, 'statusCode': this._statusCode, 'message':this._message};
   }
-  String _validateBeforeSearch(String words) {
-    return words.trim().toLowerCase();
-  }
-  void updateRecentWords(String wordSearch) async {
+
+  void updateRecentWords({String word, List phonetic}) async {
+    String recentWord = json.encode({
+      'word':word,
+      'phonetic':phonetic.isEmpty ? '' : phonetic[0]['text'],
+      'audio':phonetic.isEmpty ? '' : phonetic[0]['audio'],
+    });
+    print('Updating word $recentWord ... ');
+    this._recentWords.remove(recentWord);
+    if(this._recentWords.length > 20) this._recentWords.removeAt(0);
+    this._recentWords.add(recentWord);
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    this._recentWords = prefs.getStringList('recentWords');
-
-    if(this._recentWords == null) this._recentWords = [];
-
-      if(wordSearch != null) {
-        for(String word in this._recentWords) {
-          if(word == wordSearch) return;
-        }
-        if(this._recentWords.length > 20) this._recentWords.removeAt(0);
-        this._recentWords.add(wordSearch);
-        prefs.setStringList('recentWords', this._recentWords);
-        this.notifyListeners();
-      }
+    prefs.setStringList('recentWords', this._recentWords);
     this.notifyListeners();
   }
+  void getRecentWords() async {
+    print('Getting recent word ... ');
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    this._recentWords = prefs.getStringList('recentWords');
+    if(this._recentWords == null) this._recentWords = [];
+    print('Done');
+    this.notifyListeners();
+  }
+
 }

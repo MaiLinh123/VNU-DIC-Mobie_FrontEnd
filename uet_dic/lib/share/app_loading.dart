@@ -5,12 +5,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 class AppLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: SpinKitDoubleBounce(
-        color: Colors.green[400],
-        size: 50.0,
-      ),
+    return SpinKitFadingCircle(
+      color: Colors.green[400],
+      size: 40.0,
     );
   }
 }

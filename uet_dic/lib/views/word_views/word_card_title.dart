@@ -2,15 +2,12 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uet_dic/controllers/authenticate_controller.dart';
+import 'package:uet_dic/models/user_model.dart';
 
 class CardTitle extends StatefulWidget {
-  String wordId;
-  String title;
-  String subTitle;
-  bool saved;
-  String audio;
+  @required final Map<String, dynamic> word;
 
-  CardTitle({this.wordId, this.title, this.subTitle, this.saved, this.audio});
+  const CardTitle({this.word});
 
 
   @override
@@ -18,14 +15,18 @@ class CardTitle extends StatefulWidget {
 }
 
 class _CardTitleState extends State<CardTitle> {
+  bool saved;
+
   @override
   Widget build(BuildContext context) {
+    final User currentUser = Provider.of<AuthenticateController>(context, listen: false).currentUser;
+    this.saved = currentUser.checkExistWord(widget.word['_id']);
     return ListTile(
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            widget.title,
+            widget.word['word'],
             style: TextStyle(
               fontSize: 35,
               fontWeight: FontWeight.bold,
@@ -35,22 +36,21 @@ class _CardTitleState extends State<CardTitle> {
           ),
           IconButton(
             icon: Icon(
-              widget.saved ? Icons.favorite : Icons.favorite_border,
+              this.saved ? Icons.favorite : Icons.favorite_border,
               color: Colors.pink,
               size: 30,
             ),
-            onPressed: () {
-              if(!widget.saved) Provider.of<AuthenticateController>(context).currentUser.saveWords(widget.wordId);
-              setState(() {
-                widget.saved = !widget.saved;
-              });
+            onPressed: () async {
+              if(!this.saved) await currentUser.favouriteWord(widget.word);
+              else await currentUser.unFavouriteWord(widget.word['_id']);
+              setState(() => {});
             },
           )
         ],
       ),
-      subtitle: widget.subTitle != '' ? Row(
+      subtitle: widget.word['phonetics'].isNotEmpty ? Row(
         children: [
-          Text('${widget.subTitle}'),
+          Text('${widget.word['phonetics'][0]['text']}'),
           IconButton(
             icon: Icon(
               Icons.volume_up_rounded,
@@ -58,7 +58,7 @@ class _CardTitleState extends State<CardTitle> {
             ),
             onPressed: () async {
               AudioPlayer audioPlayer = AudioPlayer();
-              audioPlayer.play(widget.audio);
+              audioPlayer.play(widget.word['phonetics'][0]['text']);
             },
           ),
         ],

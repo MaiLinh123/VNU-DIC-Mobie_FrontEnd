@@ -36,14 +36,14 @@ class AuthenticateController with ChangeNotifier {
   Future<Map<String, dynamic>> signInAnonymously() async {
     try {
       await InternetAddress.lookup('example.com');
-      this._user = new User(username: 'anonymousUser',email: '',  words: []);
+      this._user = new User(username: 'anonymous user',email: 'anonymous email',  words: []);
       this._message = "Sign in anonymously";
       this._statusCode = 200;
       print('Sign in anonymously');
       this.notifyListeners();
-    } on SocketException catch (e) {
-      print(e.toString());
-      this._message = "Error! please check your network or try later";
+    } catch (err) {
+      print(err.toString());
+      this._message = "Please check your network or try later";
       this._statusCode = 400;
     }
     showToast(this.message, this.statusCode);
@@ -54,66 +54,54 @@ class AuthenticateController with ChangeNotifier {
   Future signInWithEmailAndPassword(String _email, String _password) async {
     var url = Uri.parse(api.signInApi);
     try {
-      await InternetAddress.lookup('example.com');
-      // sign in by api
       print('Sign in with email and password ... ');
       var response = await http.post(url, body: {
         'email': _email,
         'password': _password
       }).timeout(const Duration(seconds: 5));
-      // response body and status code
+
       final _responseBody = json.decode(response.body);
       this._statusCode = response.statusCode;
-      // if login fail (status code > 400 )
-      if (response.statusCode != 200) {
+
+      if (this._statusCode != 200) {
         this._user = null;
         this._message = _responseBody['message'] == null
             ? _responseBody['details'][0]['message']
             : _responseBody['message'];
         print('Sign in fail: ${this._message}');
         showToast(this._message, this._statusCode);
-      }
-      // if login success (status code = 200)
-      else {
+      } else {
         final String token = _responseBody['accessToken'];
         print('Get access token success!');
         saveAccessToken(token);
-        this.notifyListeners();
+        await signInWithToken();
+
         this._message = 'Sign in success';
+        showToast(this._message, this._statusCode);
       }
-    } on TimeoutException catch (err) {
-      print('Time out error, something wrong: $err');
-      this._statusCode = 400;
-      this._message = 'Time out error';
-      showToast(this._message, this._statusCode);
-    } on SocketException catch (e) {
-      print(e.toString());
-      this._message = "Error! please check your network or try later";
+    } catch (err) {
+      print(err.toString());
+      this._message = "Please check your network or try later";
       this._statusCode = 400;
       showToast(this._message, this._statusCode);
     }
     return {'statusCode': this._statusCode, 'message': this._message};
   }
 
-  Future signInWithToken() async {
+  Future<Map<String, dynamic>> signInWithToken() async {
     final storage = new FlutterSecureStorage();
-    // get token from local storage
     final token = await storage.read(key: 'token');
-    // if token found
+
     if(token != null) {
       print('token was found in local storage');
       try {
-        await InternetAddress.lookup('example.com');
         var url = Uri.parse(api.userApi);
         print('getting user with token ....');
         var response = await http.get(
           url,
           headers: {'x-access-token': token},
         ).timeout(const Duration(seconds: 10));
-        // response from sever
         final _responseBody = json.decode(response.body);
-        this._statusCode = response.statusCode;
-        // sign in fail, status code > 400
         if (response.statusCode != 200) {
           this._user = null;
           this._message = _responseBody['message'] == null
@@ -126,17 +114,15 @@ class AuthenticateController with ChangeNotifier {
           print('Sign in with token success: ${this._user.username}');
           this.notifyListeners();
         }
-      } on TimeoutException catch (err) {
-        print('Time out error, something wrong');
-        this._statusCode = 400;
-        this._message = err.toString();
-      } on SocketException catch (e) {
-        print(e.toString());
-        this._message = "Error! please check your network or try later";
+        this._statusCode = response.statusCode;
+      } catch (err) {
+        print(err.toString());
+        this._message = "Please check your network or try later";
         this._statusCode = 400;
       }
       showToast(this._message, this._statusCode);
     }
+    return {'statusCode': this._statusCode, 'message': this._message};
   }
 
   void saveAccessToken(String accessToken) async {
@@ -146,20 +132,17 @@ class AuthenticateController with ChangeNotifier {
   }
 
   // sign up with email and password
-  Future signUpWithEmailAndPassword(String _username, String _email,
+  Future<Map<String, dynamic>> signUpWithEmailAndPassword(String _username, String _email,
       String _password, String _confirmPassword) async {
     var url = Uri.parse(api.signUpApi);
     try {
-      // sign up by api
       print('Registering user .... ');
-      await InternetAddress.lookup('example.com');
       var response = await http.post(url, body: {
         'username': _username,
         'email': _email,
         'password': _password,
         'repeat_password': _confirmPassword
       }).timeout(const Duration(seconds: 5));
-      // response from sever
       final _responseBody = json.decode(response.body);
       this._statusCode = response.statusCode;
       this._message = _responseBody['message'] == null
@@ -167,12 +150,8 @@ class AuthenticateController with ChangeNotifier {
           : _responseBody['message'];
       print('Sign up result: ${this._message}');
       this.notifyListeners();
-    } on TimeoutException catch (err) {
-      print('Time out error, something wrong');
-      this._statusCode = 400;
-      this._message = err.toString();
-    } on SocketException catch (e) {
-      print(e.toString());
+    } catch (err) {
+      print(err.toString());
       this._message = "Error! please check your network or try later";
       this._statusCode = 400;
     }
@@ -181,14 +160,15 @@ class AuthenticateController with ChangeNotifier {
   }
 
   // sign out
-  Future signOut() async {
+  Future<void> signOut() async {
     final storage = new FlutterSecureStorage();
-    storage.delete(key: 'token');
+    await storage.delete(key: 'token');
     this._user = null;
     this._statusCode = 400;
     this._message = 'Sign out';
     this.notifyListeners();
     showToast(this._message, this._statusCode);
+
     print("Sign out");
   }
 }

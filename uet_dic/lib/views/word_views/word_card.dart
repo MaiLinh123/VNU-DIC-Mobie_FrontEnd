@@ -1,27 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:uet_dic/share/app_card.dart';
 
-import 'card_title.dart';
+import 'word_card_title.dart';
 
-class CardContents extends StatelessWidget {
-  Map _word;
-  bool _save;
+class WordCard extends StatelessWidget {
 
-  CardContents(Map word) {
-    this._word = word;
-  }
+  @required final Map word;
+
+  const WordCard({this.word});
+
   @override
   Widget build(BuildContext context) {
-    List<Widget> contents = [];
-    final wordTitle = CardTitle(
-        wordId: this._word['word'],
-        title: this._word['word'],
-        subTitle: this._word['phonetics'].isNotEmpty ? this._word['phonetics'][0]['text'] : '',
-        saved: false,
-        audio: this._word['phonetics'].isNotEmpty ? this._word['phonetics'][0]['audio'] : '',
-    );
-
-    for (final _meaning in this._word['meanings']) {
+    final title = CardTitle(word: this.word,);
+    final List<Widget> contents = [];
+    for (final _meaning in this.word['meanings']) {
       for (final _definition in _meaning['definitions']) {
         contents.add(Text('Mean (${_meaning['partOfSpeech']})',
             style: TextStyle(
@@ -50,20 +42,22 @@ class CardContents extends StatelessWidget {
     }
 
     return AppCard(
-        child: Padding(
-      padding: const EdgeInsets.fromLTRB(8, 20, 8, 0),
-      child: Column(
-        children: [
-          wordTitle,
-          Divider(),
-          Expanded(
-            child: ListView(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(8, 20, 8, 0),
+        child: Column(
+          children: [
+            title,
+            Divider(),
+            Expanded(
+              child: ListView(
                 padding: EdgeInsets.only(left: 13, right: 13),
                 physics: const BouncingScrollPhysics(),
-                children: contents),
-          ),
-        ],
+                children: contents,
+              ),
+            ),
+          ],
+        ),
       ),
-    ));
+    );
   }
 }

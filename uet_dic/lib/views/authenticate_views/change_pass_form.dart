@@ -6,14 +6,13 @@ import 'package:uet_dic/share/app_loading.dart';
 import 'package:uet_dic/views/authenticate_views/auth_components/auth_button.dart';
 import 'auth_components/auth_text_form_field.dart';
 
-class SignUpForm extends StatefulWidget {
+class ChangePasswordForm extends StatefulWidget {
   @override
-  _SignUpFormState createState() => _SignUpFormState();
+  _ChangePasswordForm createState() => _ChangePasswordForm();
 }
 
-class _SignUpFormState extends State<SignUpForm> {
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
+class _ChangePasswordForm extends State<ChangePasswordForm> {
+  final _oldPasswordController = TextEditingController();
   final _passwordController = TextEditingController();
   final _passwordConfirmController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -24,18 +23,19 @@ class _SignUpFormState extends State<SignUpForm> {
   @override
   Widget build(BuildContext context) {
     if (_loading) return AppLoading();
-    print('Sign Up Screen');
+    print('Change pass word Screen');
     final _authenticateController =
-    Provider.of<AuthenticateController>(context, listen: false);
+      Provider.of<AuthenticateController>(context, listen: false);
 
-    final _emailField = AuthTextFormField(
-      controller: _emailController,
+    final _oldPasswordField = AuthTextFormField(
+      obscureText: true,
+      controller: _oldPasswordController,
       validator: (value) {
-        if (value.isEmpty) return "Please enter your email";
+        if (value.isEmpty) return "Please enter your old password";
         return null;
       },
-      iconData: Icons.email_rounded,
-      hintText: "Enter email",
+      iconData: Icons.vpn_key_rounded,
+      hintText: "Enter old password",
     );
     final _passwordField = AuthTextFormField(
       obscureText: true,
@@ -44,19 +44,10 @@ class _SignUpFormState extends State<SignUpForm> {
         if (value.isEmpty) return "Please enter your password";
         return null;
       },
-      iconData: Icons.vpn_key,
+      iconData: Icons.vpn_key_rounded,
       hintText: "Enter password",
     );
 
-    final _nameField = AuthTextFormField(
-      controller: _nameController,
-      validator: (value) {
-        if (value.isEmpty) return "Please enter your name";
-        return null;
-      },
-      hintText: "Enter name",
-      iconData: Icons.account_circle,
-    );
     final _passwordConfirmField = AuthTextFormField(
       obscureText: true,
       controller: _passwordConfirmController,
@@ -65,42 +56,32 @@ class _SignUpFormState extends State<SignUpForm> {
           return 'Confirm password incorrect';
         return null;
       },
-      iconData: Icons.vpn_key,
+      iconData: Icons.vpn_key_rounded,
       hintText: "Confirm your password",
     );
-    final _signUpButton = AuthButton(
-      child: Text('Sign up'),
+    final _changePassButton = AuthButton(
+      child: Text('Update password'),
       onPressed: () async {
         if (_formKey.currentState.validate()) {
           setState(() {
             this._loading = true;
           });
-          Map<String, dynamic> result =
-          await _authenticateController.signUpWithEmailAndPassword(
-            _nameController.text,
-            _emailController.text,
+          int statusCode = await _authenticateController.currentUser.updatePassword(
+            _oldPasswordController.text,
             _passwordController.text,
-            _passwordConfirmController.text,
+            _passwordConfirmController.text
           );
-          if (result['statusCode'] == 200) Navigator.pop(context, _emailController.text);
-          setState(() {
-            this._loading = false;
-          });
+          if (statusCode == 200) {
+            Navigator.popUntil(context, ModalRoute.withName('/'));
+            await _authenticateController.signOut();
+          }
+          else {
+            setState(() {
+              this._loading = false;
+            });
+          }
         }
       },
-    );
-    final _backToSignIn = Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text('Already have account?'),
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('Sign in',
-              style: TextStyle(color: Colors.green[400], fontSize: 16)),
-        ),
-      ],
     );
 
     return Form(
@@ -109,16 +90,13 @@ class _SignUpFormState extends State<SignUpForm> {
         physics: const BouncingScrollPhysics(),
         children: [
           SizedBox(height: 20),
-          _nameField,
-          SizedBox(height: 10),
-          _emailField,
+          _oldPasswordField,
           SizedBox(height: 10),
           _passwordField,
           SizedBox(height: 10),
           _passwordConfirmField,
           SizedBox(height: 23),
-          _signUpButton,
-          _backToSignIn,
+          _changePassButton,
         ],
       ),
     );

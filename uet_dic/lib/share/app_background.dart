@@ -25,6 +25,6 @@ class AppBackGround extends StatelessWidget {
         ),
         this.aboveBackground
       ],
-    );;
+    );
   }
 }
