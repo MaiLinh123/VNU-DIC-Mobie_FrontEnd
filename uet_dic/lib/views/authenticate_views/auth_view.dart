@@ -3,14 +3,13 @@ import 'package:keyboard_avoider/keyboard_avoider.dart';
 import 'package:uet_dic/share/app_card.dart';
 import 'package:uet_dic/share/app_background.dart';
 import 'package:uet_dic/share/app_loading.dart';
-import 'package:uet_dic/share/app_logo.dart';
 
 class AuthenticateView extends StatelessWidget {
 
   @required final bool loading;
   @required final Widget child;
   final Widget appBar;
-  const AuthenticateView({this.loading, this.child, this.appBar});
+  const AuthenticateView({this.loading = false, this.child, this.appBar});
 
   @override
   Widget build(BuildContext context) {

@@ -33,25 +33,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ca60929-407d-4f68-be98-3412431dfcf9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uet_dic/lib/controllers/authenticate_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/controllers/authenticate_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uet_dic/lib/controllers/quiz_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/controllers/quiz_controller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uet_dic/lib/controllers/translate_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/controllers/translate_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uet_dic/lib/controllers/word_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/controllers/word_controller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uet_dic/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uet_dic/lib/models/quiz_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/models/quiz_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uet_dic/lib/models/user_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/models/user_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uet_dic/lib/models/word_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/models/word_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/auth_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/auth_view.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/change_pass_form.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/change_pass_form.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/sign_in_form.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/sign_in_form.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/sign_up_form.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/authenticate_views/sign_up_form.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/home_views/home_components/home_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/home_views/home_components/home_button.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/home_views/home_components/home_drawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/home_views/home_components/home_drawer.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/home_views/home_components/home_history_words.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/home_views/home_components/home_history_words.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/favourite_views/favourite_item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/favourite_views/favourite_item.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/favourite_views/favourite_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/favourite_views/favourite_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/home_views/home_components/home_history_words.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/home_views/home_components/home_recent_words.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/home_views/home_components/home_search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/home_views/home_components/home_search.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/home_views/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/home_views/home_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/profile_views/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/profile_views/profile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/word_views/word_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/word_views/word_card_content.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/word_views/word_card_content.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/word_views/word_card_content.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/word_views/word_card_title.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/word_views/word_card_title.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/word_views/word_details_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/word_views/word_details_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uet_dic/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uet_dic/lib/views/wrapper_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/lib/views/wrapper_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uet_dic/test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/uet_dic/test.dart" afterDir="false" />
     </list>
     <list id="28465e11-6d89-4f97-9e8d-00170fac236b" name="Revert &quot;find word and history word complete&quot;" comment="Revert &quot;find word and history word complete&quot;&#10;&#10;This reverts commit 73da92b9" />
     <option name="SHOW_DIALOG" value="false" />
@@ -197,30 +201,30 @@
     </state>
     <state x="682" y="231" width="424" height="487" key="FileChooserDialogImpl/0.30.1920.1050/1920.156.1366.768@0.30.1920.1050" timestamp="1620112571946" />
     <state x="1163" y="374" width="848" height="992" key="FileChooserDialogImpl/112.54.2960.1674@112.54.2960.1674" timestamp="1618146394629" />
-    <state width="1874" height="405" key="GridCell.Tab.0.bottom" timestamp="1620358599099">
+    <state width="1874" height="216" key="GridCell.Tab.0.bottom" timestamp="1620395952925">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1491" height="287" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1618308761499" />
     <state width="1320" height="272" key="GridCell.Tab.0.bottom/0.30.1366.738@0.30.1366.738" timestamp="1619886455801" />
-    <state width="1874" height="405" key="GridCell.Tab.0.bottom/0.30.1920.1050/1920.156.1366.768@0.30.1920.1050" timestamp="1620358599099" />
-    <state width="1874" height="405" key="GridCell.Tab.0.center" timestamp="1620358599099">
+    <state width="1874" height="216" key="GridCell.Tab.0.bottom/0.30.1920.1050/1920.156.1366.768@0.30.1920.1050" timestamp="1620395952925" />
+    <state width="1874" height="216" key="GridCell.Tab.0.center" timestamp="1620395952925">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1491" height="287" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1618308761498" />
     <state width="1320" height="272" key="GridCell.Tab.0.center/0.30.1366.738@0.30.1366.738" timestamp="1619886455801" />
-    <state width="1874" height="405" key="GridCell.Tab.0.center/0.30.1920.1050/1920.156.1366.768@0.30.1920.1050" timestamp="1620358599099" />
-    <state width="1874" height="405" key="GridCell.Tab.0.left" timestamp="1620358599099">
+    <state width="1874" height="216" key="GridCell.Tab.0.center/0.30.1920.1050/1920.156.1366.768@0.30.1920.1050" timestamp="1620395952925" />
+    <state width="1874" height="216" key="GridCell.Tab.0.left" timestamp="1620395952925">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1491" height="287" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1618308761497" />
     <state width="1320" height="272" key="GridCell.Tab.0.left/0.30.1366.738@0.30.1366.738" timestamp="1619886455800" />
-    <state width="1874" height="405" key="GridCell.Tab.0.left/0.30.1920.1050/1920.156.1366.768@0.30.1920.1050" timestamp="1620358599099" />
-    <state width="1874" height="405" key="GridCell.Tab.0.right" timestamp="1620358599099">
+    <state width="1874" height="216" key="GridCell.Tab.0.left/0.30.1920.1050/1920.156.1366.768@0.30.1920.1050" timestamp="1620395952925" />
+    <state width="1874" height="216" key="GridCell.Tab.0.right" timestamp="1620395952925">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1491" height="287" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1618308761498" />
     <state width="1320" height="272" key="GridCell.Tab.0.right/0.30.1366.738@0.30.1366.738" timestamp="1619886455801" />
-    <state width="1874" height="405" key="GridCell.Tab.0.right/0.30.1920.1050/1920.156.1366.768@0.30.1920.1050" timestamp="1620358599099" />
+    <state width="1874" height="216" key="GridCell.Tab.0.right/0.30.1920.1050/1920.156.1366.768@0.30.1920.1050" timestamp="1620395952925" />
     <state x="583" y="131" width="2018" height="1484" key="SettingsEditor" timestamp="1618128787745">
       <screen x="112" y="54" width="2960" height="1674" />
     </state>
@@ -233,6 +237,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="814" y="476" width="281" height="160" key="VCS.ChangelistChooser/0.30.1920.1050/1920.156.1366.768@0.30.1920.1050" timestamp="1619711761280" />
+    <state x="624" y="254" key="run.anything.popup" timestamp="1620373248977">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state x="624" y="254" key="run.anything.popup/0.30.1920.1050/1920.156.1366.768@0.30.1920.1050" timestamp="1620373248977" />
     <state x="486" y="113" width="945" height="965" key="search.everywhere.popup" timestamp="1620287384884">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>

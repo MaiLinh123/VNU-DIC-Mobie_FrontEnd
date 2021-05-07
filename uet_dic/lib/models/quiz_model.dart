@@ -1,4 +1,6 @@
 
+import 'package:uet_dic/models/word_model.dart';
+
 class Quiz {
   String partOfSpeech;
   String question; // mean of a word
@@ -10,8 +12,7 @@ class Quiz {
 class Answer {
   String id;
   String word;
-  String phoneticText;
-  String phoneticAudio;
+  Phonetic phonetic;
 
-  Answer({this.id, this.word, this.phoneticText, this.phoneticAudio});
+  Answer({this.id, this.word, this.phonetic});
 }

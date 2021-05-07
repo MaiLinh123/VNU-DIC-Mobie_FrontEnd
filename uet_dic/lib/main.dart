@@ -23,7 +23,9 @@ class UDictApp extends StatelessWidget {
     print('Welcome');
     return MultiProvider(
       providers: [
+        /// AuthenticateController wil notify if the current user has changed
         ChangeNotifierProvider(create: (_) => AuthenticateController()),
+        /// WordController will notify recent words list as long as new word was searched
         ChangeNotifierProvider(create: (_) => WordController())
       ],
       child: MaterialApp(
@@ -33,8 +35,8 @@ class UDictApp extends StatelessWidget {
           '/favourite': (context) => FavouriteView(),
           '/profile': (context) => Profile(),
           '/translate': (context) => TextTranslate(),
-          '/signup': (context) => AuthenticateView(child: SignUpForm(), loading: false,),
-          '/updatepassword': (context) => AuthenticateView(appBar: MyAppBar(title: 'Update password'),child: ChangePasswordForm(), loading: false, ),
+          '/signup': (context) => AuthenticateView(child: SignUpForm()),
+          '/updatepassword': (context) => AuthenticateView(appBar: MyAppBar(title: 'Update password'),child: ChangePasswordForm()),
           '/quiz': (context) => QuizView(appBar: MyAppBar(title: 'Quizzes')),
         },
       ),

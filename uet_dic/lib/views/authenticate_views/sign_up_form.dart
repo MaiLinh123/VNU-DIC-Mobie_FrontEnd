@@ -27,7 +27,7 @@ class _SignUpFormState extends State<SignUpForm> {
     if (_loading) return AppLoading();
     print('Sign Up Screen');
     final _authenticateController =
-    Provider.of<AuthenticateController>(context, listen: false);
+      Provider.of<AuthenticateController>(context, listen: false);
 
     final _emailField = AuthTextFormField(
       controller: _emailController,
@@ -48,7 +48,6 @@ class _SignUpFormState extends State<SignUpForm> {
       iconData: Icons.vpn_key,
       hintText: "Enter password",
     );
-
     final _nameField = AuthTextFormField(
       controller: _nameController,
       validator: (value) {
@@ -73,20 +72,17 @@ class _SignUpFormState extends State<SignUpForm> {
       child: Text('Sign up'),
       onPressed: () async {
         if (_formKey.currentState.validate()) {
-          setState(() {
-            this._loading = true;
-          });
-          Map<String, dynamic> result =
-          await _authenticateController.signUpWithEmailAndPassword(
-            _nameController.text,
-            _emailController.text,
-            _passwordController.text,
-            _passwordConfirmController.text,
+          setState(() => this._loading = true);
+          int statusCode =
+            await _authenticateController.signUpWithEmailAndPassword(
+              _nameController.text,
+              _emailController.text,
+              _passwordController.text,
+              _passwordConfirmController.text,
+            );
+          if (statusCode == 200) Navigator.pop(context, _emailController.text);
+          setState(() => this._loading = false,
           );
-          if (result['statusCode'] == 200) Navigator.pop(context, _emailController.text);
-          setState(() {
-            this._loading = false;
-          });
         }
       },
     );
@@ -95,11 +91,11 @@ class _SignUpFormState extends State<SignUpForm> {
       children: [
         Text('Already have account?'),
         TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('Sign in',
-              style: TextStyle(color: Colors.green[400], fontSize: 16)),
+          child: Text(
+            'Sign in',
+            style: TextStyle(color: Colors.green[400], fontSize: 16),
+          ),
+          onPressed: () => Navigator.pop(context),
         ),
       ],
     );

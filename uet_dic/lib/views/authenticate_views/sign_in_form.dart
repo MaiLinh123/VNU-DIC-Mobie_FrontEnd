@@ -57,14 +57,10 @@ class _SignInFormState extends State<SignInForm> {
           onPressed: () async {
             if (_formKey.currentState.validate()) {
               setState(() => this._loading = true);
-              Map<String, dynamic> result =
+              int statusCode =
                   await _authenticateController.signInWithEmailAndPassword(
                       _emailController.text, _passwordController.text);
-              if (result['statusCode'] != 200) {
-                setState(() {
-                  this._loading = false;
-                });
-              }
+              if (statusCode != 200) setState(() => this._loading = false);
             }
           },
         ),
@@ -74,13 +70,8 @@ class _SignInFormState extends State<SignInForm> {
           child: Text('Start now'),
           onPressed: () async {
             setState(() => this._loading = true);
-            Map<String, dynamic> result =
-                await _authenticateController.signInAnonymously();
-            if (result['statusCode'] != 200) {
-              setState(() {
-                this._loading = false;
-              });
-            }
+            int statusCode = await _authenticateController.signInAnonymously();
+            if (statusCode != 200) setState(() => this._loading = false);
           },
         ),
       ],
@@ -89,7 +80,7 @@ class _SignInFormState extends State<SignInForm> {
       child: Text('Create New Account'),
       onPressed: () async {
         final result = await Navigator.pushNamed(context, '/signup');
-        if(result != null)  _emailController.text = result;
+        if (result != null) _emailController.text = result;
       },
     );
 

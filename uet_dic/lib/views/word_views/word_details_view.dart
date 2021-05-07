@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:uet_dic/models/word_model.dart';
 import 'package:uet_dic/share/app_background.dart';
 import 'package:uet_dic/share/app_bar.dart';
 import 'package:uet_dic/views/word_views/word_card_content.dart';
 
 class WordDetailsView extends StatelessWidget {
 
-  @required final List words;
-  WordDetailsView({this.words});
+  @required final List<Word> wordsList;
+  WordDetailsView({this.wordsList});
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +18,9 @@ class WordDetailsView extends StatelessWidget {
     final _wordCards = Swiper(
       physics: const BouncingScrollPhysics(),
       itemBuilder: (BuildContext context, int index) {
-        return WordCardContent(word: this.words[index]);
+        return WordCardContent(word: this.wordsList[index]);
       },
-      itemCount: this.words.length,
+      itemCount: this.wordsList.length,
       viewportFraction: 0.85,
       scale: 0.9,
       loop: false,

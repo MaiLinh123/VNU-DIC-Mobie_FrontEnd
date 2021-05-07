@@ -7,12 +7,12 @@ import 'package:provider/provider.dart';
 import 'package:uet_dic/controllers/word_controller.dart';
 import 'package:uet_dic/views/word_views/word_details_view.dart';
 
-class HomeHistoryWords extends StatelessWidget {
+class HomeRecentWords extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _wordController = Provider.of<WordController>(context, listen: true);
+    final wordController = Provider.of<WordController>(context, listen: true);
 
-    List<String> encodedWordList = _wordController.recentWord;
+    List<String> encodedWordList = wordController.recentWordsList;
     int length = encodedWordList.length;
 
     return Padding(
@@ -21,6 +21,7 @@ class HomeHistoryWords extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         showItemInterval: Duration(milliseconds: 25),
         itemCount: length,
+
         itemBuilder: (context, index, animation) {
           index = length - index - 1;
           final word = json.decode(encodedWordList[index]);
@@ -42,12 +43,12 @@ class HomeHistoryWords extends StatelessWidget {
                         color: Colors.green[400],
                       ),
                       onPressed: () async {
-                        final result = await _wordController.queryWord(word['word']);
+                        final result = await wordController.queryWord(word['word']);
                         if (result['statusCode'] == 200) {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => WordDetailsView(words: result['words']),
+                              builder: (context) => WordDetailsView(wordsList: result['queriedWordsList']),
                             ),
                           );
                         }
