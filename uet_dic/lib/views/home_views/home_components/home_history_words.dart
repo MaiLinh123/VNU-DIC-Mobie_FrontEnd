@@ -14,6 +14,7 @@ class HomeHistoryWords extends StatelessWidget {
 
     List<String> encodedWordList = _wordController.recentWord;
     int length = encodedWordList.length;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: LiveList(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uet_dic/controllers/authenticate_controller.dart';
+import 'package:uet_dic/share/app_logo.dart';
 
 class HomeDrawer extends StatelessWidget {
   @override
@@ -8,35 +9,7 @@ class HomeDrawer extends StatelessWidget {
     final _authenticateController =
         Provider.of<AuthenticateController>(context, listen: false);
 
-    final _drawerHeader = DrawerHeader(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Icon(
-            Icons.auto_stories,
-            size: 80,
-            color: Colors.green,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'VNU',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green[400],
-                    fontSize: 40),
-              ),
-              Text(
-                'Dictionary',
-                style: TextStyle(color: Colors.green[400], fontSize: 30),
-              )
-            ],
-          ),
-        ],
-      ),
-    );
+    final _drawerHeader = DrawerHeader(child: AppLogo());
     final _drawerUser = ListTile(
       title: Text(
         _authenticateController.currentUser.username,
@@ -70,9 +43,16 @@ class HomeDrawer extends StatelessWidget {
         Navigator.popAndPushNamed(context, '/favourite');
       },
     );
+    final _drawerQuiz = ListTile(
+      title: Text('Quizzes', style: TextStyle(fontWeight: FontWeight.bold)),
+      leading: Icon(Icons.star),
+      onTap: () {
+        Navigator.popAndPushNamed(context, '/quiz');
+      },
+    );
     final _drawerTranslate = ListTile(
       title: Text('Translate', style: TextStyle(fontWeight: FontWeight.bold)),
-      leading: Icon(Icons.translate),
+      leading: Icon(Icons.g_translate),
       onTap: () {
         Navigator.popAndPushNamed(context, '/translate');
       },
@@ -80,8 +60,8 @@ class HomeDrawer extends StatelessWidget {
     final _drawerLogout = ListTile(
       title: Text('Log Out', style: TextStyle(fontWeight: FontWeight.bold)),
       leading: Icon(Icons.logout),
-      onTap: () {
-        _authenticateController.signOut();
+      onTap: () async {
+        await _authenticateController.signOut();
       },
     );
 
@@ -95,6 +75,7 @@ class HomeDrawer extends StatelessWidget {
             _drawerUser,
             _drawerHome,
             _drawerFavourite,
+            _drawerQuiz,
             _drawerTranslate,
             _drawerLogout
           ],

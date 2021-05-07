@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:uet_dic/controllers/authenticate_controller.dart';
 import 'package:uet_dic/share/app_loading.dart';
+import 'package:uet_dic/share/app_logo.dart';
 import 'package:uet_dic/views/authenticate_views/auth_components/auth_button.dart';
 import 'auth_components/auth_text_form_field.dart';
 
@@ -108,7 +109,9 @@ class _SignUpFormState extends State<SignUpForm> {
       child: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          SizedBox(height: 20),
+          SizedBox(height: 10),
+          AppLogo(),
+          SizedBox(height: 40),
           _nameField,
           SizedBox(height: 10),
           _emailField,

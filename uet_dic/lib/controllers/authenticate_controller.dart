@@ -12,7 +12,7 @@ import 'package:uet_dic/share/app_loading.dart';
 class AuthenticateController with ChangeNotifier {
   User _user; // current user
   String _message; // the message response from server
-  int _statusCode; // status code
+  int _statusCode; // status code of response from server
 
   AuthenticateController() {
     this._user = null;
@@ -32,11 +32,10 @@ class AuthenticateController with ChangeNotifier {
     return this._statusCode;
   }
 
-  // sign in anonymous
   Future<Map<String, dynamic>> signInAnonymously() async {
     try {
       await InternetAddress.lookup('example.com');
-      this._user = new User(username: 'anonymous user',email: 'anonymous email',  words: []);
+      this._user = new User(username: 'anonymous user',email: 'anonymous email',  wordIdList: []);
       this._message = "Sign in anonymously";
       this._statusCode = 200;
       print('Sign in anonymously');

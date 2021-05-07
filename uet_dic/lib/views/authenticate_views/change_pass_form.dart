@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:uet_dic/controllers/authenticate_controller.dart';
 import 'package:uet_dic/share/app_loading.dart';
+import 'package:uet_dic/share/app_logo.dart';
 import 'package:uet_dic/views/authenticate_views/auth_components/auth_button.dart';
 import 'auth_components/auth_text_form_field.dart';
 
@@ -74,6 +75,7 @@ class _ChangePasswordForm extends State<ChangePasswordForm> {
           if (statusCode == 200) {
             Navigator.popUntil(context, ModalRoute.withName('/'));
             await _authenticateController.signOut();
+            showToast('Sign in again', 200);
           }
           else {
             setState(() {
@@ -89,7 +91,7 @@ class _ChangePasswordForm extends State<ChangePasswordForm> {
       child: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          SizedBox(height: 20),
+          SizedBox(height: 40),
           _oldPasswordField,
           SizedBox(height: 10),
           _passwordField,

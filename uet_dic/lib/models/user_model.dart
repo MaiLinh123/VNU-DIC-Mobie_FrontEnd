@@ -10,15 +10,15 @@ import 'package:uet_dic/share/app_loading.dart';
 class User {
   String _email;
   String _username;
-  Map<String, dynamic> _words;
+  Map<String, dynamic> _wordIdMap;
   bool isWordsGot = false;
 
-  User({String username, String email, List words}) {
+  User({String username, String email, List wordIdList}) {
     this._email = email;
     this._username = username;
-    this._words = {};
-    for (final wordID in words) {
-      this._words['$wordID'] = wordID;
+    this._wordIdMap = {};
+    for (final wordId in wordIdList) {
+      this._wordIdMap['$wordId'] = wordId;
     }
 
     print('Create user successful : ${this.username}');
@@ -32,20 +32,20 @@ class User {
     return this._username;
   }
 
-  Map<String, dynamic> get words {
-    return this._words;
+  Map<String, dynamic> get wordIdMap {
+    return this._wordIdMap;
   }
 
   factory User.fromJson(Map<String, dynamic> partedJson) {
     return User(
       username: partedJson['username'],
       email: partedJson['email'],
-      words: partedJson['words'],
+      wordIdList: partedJson['words'],
     );
   }
 
-  bool checkExistWord(String wordID) {
-    return this._words['$wordID'] != null;
+  bool checkExistWord(String wordId) {
+    return this._wordIdMap['$wordId'] != null;
   }
 
   Future<int> favouriteWord(Map<String, dynamic> word) async {
@@ -63,7 +63,7 @@ class User {
           headers: {'x-access-token': token},
           body: {"wordId": word['_id']},
         ).timeout(const Duration(seconds: 2));
-        if (response.statusCode == 200) this._words['${word['_id']}'] = word;
+        if (response.statusCode == 200) this._wordIdMap['${word['_id']}'] = word;
 
         print('${response.body}, ${response.statusCode}');
         showToast(json.decode(response.body)['message'], response.statusCode);
@@ -94,7 +94,7 @@ class User {
           headers: {'x-access-token': token},
           body: {"wordId": wordID},
         ).timeout(const Duration(seconds: 2));
-        if (response.statusCode == 200) this._words.remove(wordID);
+        if (response.statusCode == 200) this._wordIdMap.remove(wordID);
         showToast(response.body, response.statusCode);
         return response.statusCode;
       } catch (err) {
@@ -113,17 +113,17 @@ class User {
     if (!this.isWordsGot) {
       print('Getting favourite words ... ');
       try {
-        for (var entry in this.words.entries) {
+        for (final entry in this._wordIdMap.entries) {
           if (entry.key != entry.value) continue;
           final url = Uri.parse('${api.wordIDQueryApi}${entry.key}');
           final response =
               await http.get(url).timeout(const Duration(milliseconds: 500));
           if (response.statusCode == 200) {
-            final Map<String, dynamic> _queriedByID =
+            final Map<String, dynamic> _wordQueriedByID =
                 json.decode(response.body)['word'];
-            this.words[entry.key] = _queriedByID;
+            this._wordIdMap[entry.key] = _wordQueriedByID;
           } else {
-            this.words.remove(entry.key);
+            this._wordIdMap.remove(entry.key);
             this.unFavouriteWord(entry.key);
           }
         }
@@ -136,7 +136,7 @@ class User {
       }
     }
     this
-        .words
+        ._wordIdMap
         .entries
         .forEach((e) => favouriteList.add({'id': e.key, 'word': e.value}));
     return favouriteList;
@@ -179,6 +179,6 @@ class User {
   }
 
   String userInformation() {
-    return 'email: ${this.email}, username: ${this.username}, words: ${this.words}';
+    return 'email: ${this.email}, username: ${this.username}, words: ${this._wordIdMap}';
   }
 }

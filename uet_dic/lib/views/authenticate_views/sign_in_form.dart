@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:uet_dic/controllers/authenticate_controller.dart';
 import 'package:uet_dic/share/app_loading.dart';
+import 'package:uet_dic/share/app_logo.dart';
 import 'package:uet_dic/views/authenticate_views/auth_components/auth_button.dart';
 
 import 'auth_components/auth_text_form_field.dart';
@@ -98,6 +99,8 @@ class _SignInFormState extends State<SignInForm> {
         physics: const BouncingScrollPhysics(),
         children: [
           SizedBox(height: 20),
+          AppLogo(),
+          SizedBox(height: 50),
           _emailField,
           SizedBox(height: 10),
           _passwordField,

@@ -60,7 +60,7 @@ class Profile extends StatelessWidget {
                         title: Text(
                           'Favourite words',
                         ),
-                        subtitle: Text('${currentUser.words.length}'),
+                        subtitle: Text('${currentUser.wordIdMap.length}'),
                         leading: Icon(Icons.menu_book_outlined),
                         trailing: IconButton(
                           icon: Icon(Icons.arrow_forward_ios_rounded),

@@ -12,7 +12,6 @@ class HomeButton extends StatelessWidget {
     return  FlatButton(
       padding: EdgeInsets.all(23),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(icon, color: Colors.white,),

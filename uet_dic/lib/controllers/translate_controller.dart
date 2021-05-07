@@ -34,6 +34,7 @@ class TranslateController {
     } catch (err) {
       this._message = 'Check your internet or try later';
       print('Error: $err');
+      _statusCode = 400;
     }
     showToast(this._message, this._statusCode);
     return _translatedText;

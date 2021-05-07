@@ -3,6 +3,7 @@ import 'package:keyboard_avoider/keyboard_avoider.dart';
 import 'package:uet_dic/share/app_card.dart';
 import 'package:uet_dic/share/app_background.dart';
 import 'package:uet_dic/share/app_loading.dart';
+import 'package:uet_dic/share/app_logo.dart';
 
 class AuthenticateView extends StatelessWidget {
 
@@ -18,9 +19,10 @@ class AuthenticateView extends StatelessWidget {
       aboveBackground: Padding(
         padding: const EdgeInsets.fromLTRB(20, 50, 20, 0),
         child: AppCard(
-          child: this.loading ? AppLoading() : Padding(
+          child: this.loading ? AppLoading() :
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
-            child: KeyboardAvoider(child: this.child),
+            child: KeyboardAvoider(child: this.child)
           ),
         ),
       ),

@@ -41,10 +41,13 @@ class HomeScreen extends StatelessWidget {
               Navigator.pushNamed(context, '/favourite');
             },
         ),
-        HomeButton(icon: Icons.translate, label: 'Translate', onPress: () {
+        HomeButton(icon: Icons.g_translate, label: 'Translate', onPress: () {
           Navigator.pushNamed(context, '/translate');
         }),
-        HomeButton(icon: Icons.share, label: 'Pronounce', onPress: () {}),
+        HomeButton(icon: Icons.star_border, label: 'Quizzes', onPress: () {
+            Navigator.pushNamed(context, '/quiz');
+          },
+        ),
       ],
     );
     final _homeWordList = Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:uet_dic/share/app_background.dart';
 import 'package:uet_dic/share/app_bar.dart';
-import 'package:uet_dic/views/word_views/word_card.dart';
+import 'package:uet_dic/views/word_views/word_card_content.dart';
 
 class WordDetailsView extends StatelessWidget {
 
@@ -17,7 +17,7 @@ class WordDetailsView extends StatelessWidget {
     final _wordCards = Swiper(
       physics: const BouncingScrollPhysics(),
       itemBuilder: (BuildContext context, int index) {
-        return WordCard(word: this.words[index]);
+        return WordCardContent(word: this.words[index]);
       },
       itemCount: this.words.length,
       viewportFraction: 0.85,

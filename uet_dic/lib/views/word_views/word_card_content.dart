@@ -3,11 +3,11 @@ import 'package:uet_dic/share/app_card.dart';
 
 import 'word_card_title.dart';
 
-class WordCard extends StatelessWidget {
+class WordCardContent extends StatelessWidget {
 
   @required final Map word;
 
-  const WordCard({this.word});
+  const WordCardContent({this.word});
 
   @override
   Widget build(BuildContext context) {
