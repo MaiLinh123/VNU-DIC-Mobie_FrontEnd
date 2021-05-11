@@ -22,6 +22,7 @@ class _CardTitleState extends State<CardTitle> {
   Widget build(BuildContext context) {
     final User currentUser = Provider.of<AuthenticateController>(context, listen: false).currentUser;
     this.saved = currentUser.checkExistWord(widget.word.id);
+
     return ListTile(
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:uet_dic/controllers/authenticate_controller.dart';
 import 'package:uet_dic/share/app_background.dart';
 import 'package:uet_dic/share/app_bar.dart';
 import 'package:uet_dic/share/app_card.dart';
+import 'package:uet_dic/share/app_loading.dart';
 
 import 'home_components/home_button.dart';
 import 'home_components/home_drawer.dart';
@@ -14,6 +17,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('Home Screen');
+    final _authenticateController =
+      Provider.of<AuthenticateController>(context, listen: false);
 
     final homeAppbar = MyAppBar(
       title: 'VNU Dictionary',
@@ -47,7 +52,12 @@ class HomeScreen extends StatelessWidget {
         HomeButton(
           icon: Icons.star_border,
           label: 'Quizzes',
-          onPress: () => Navigator.pushNamed(context, '/quiz'),
+          onPress: () {
+            if(_authenticateController.currentUser.wordIdMap.length < 6) {
+              showToast('Favourite words list must have at least 6 words', 400);
+            }
+            else Navigator.pushNamed(context, '/quiz');
+          },
         ),
       ],
     );
@@ -69,7 +79,7 @@ class HomeScreen extends StatelessWidget {
 
     final homeBody = AppBackGround(
       aboveBackground: Padding(
-        padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
+        padding: const EdgeInsets.fromLTRB(25, 30, 25, 0),
         child: Column(
           children: [
             homeSearch,

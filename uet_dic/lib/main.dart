@@ -7,7 +7,7 @@ import 'package:uet_dic/views/authenticate_views/change_pass_form.dart';
 import 'package:uet_dic/views/authenticate_views/sign_up_form.dart';
 import 'package:uet_dic/views/favourite_views/favourite_view.dart';
 import 'package:uet_dic/views/profile_views/profile.dart';
-import 'package:uet_dic/views/quizz_views/quiz_view.dart';
+import 'package:uet_dic/views/quiz_views/quiz_view.dart';
 import 'package:uet_dic/views/text_translate_views/translate_view.dart';
 import 'package:uet_dic/views/wrapper_screen.dart';
 
@@ -37,7 +37,7 @@ class UDictApp extends StatelessWidget {
           '/translate': (context) => TextTranslate(),
           '/signup': (context) => AuthenticateView(child: SignUpForm()),
           '/updatepassword': (context) => AuthenticateView(appBar: MyAppBar(title: 'Update password'),child: ChangePasswordForm()),
-          '/quiz': (context) => QuizView(appBar: MyAppBar(title: 'Quizzes')),
+          '/quiz': (context) => QuizView(),
         },
       ),
     );

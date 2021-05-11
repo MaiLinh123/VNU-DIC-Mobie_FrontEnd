@@ -70,7 +70,6 @@ class _FavouriteItemState extends State<FavouriteItem> {
           ),
         );
       },
-
     );
   }
 }

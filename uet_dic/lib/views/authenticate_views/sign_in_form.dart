@@ -101,10 +101,10 @@ class _SignInFormState extends State<SignInForm> {
             padding: const EdgeInsets.all(10.0),
             child: Divider(color: Colors.grey[800]),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 60),
-            child: _signUpButton,
-          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [_signUpButton],
+          )
         ],
       ),
     );

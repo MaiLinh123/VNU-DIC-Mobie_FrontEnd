@@ -19,7 +19,7 @@ class Profile extends StatelessWidget {
       ),
       body: AppBackGround(
         aboveBackground: Padding(
-          padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
+          padding: const EdgeInsets.fromLTRB(25, 30, 25, 0),
           child: Column(
             children: [
               Icon(

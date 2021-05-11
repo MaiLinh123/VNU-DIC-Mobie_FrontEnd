@@ -1,12 +1,27 @@
-
 import 'package:uet_dic/models/word_model.dart';
 
 class Quiz {
   String partOfSpeech;
-  String question; // mean of a word
-  Answer answer; // length = 4
+  String question;
+  Answer trueAnswer;
+  List<Answer> allAnswer = [];
 
-  Quiz({this.partOfSpeech, this.question, this.answer});
+  int chosen = -1;
+  int correct = -1;
+
+  bool isCheck = false;
+
+  Quiz({this.partOfSpeech, this.question, this.trueAnswer});
+
+  void check() {
+    for (var i = 0; i < 4; i++) {
+      if (this.trueAnswer.id == allAnswer[i].id) {
+        correct = i;
+        isCheck = true;
+        break;
+      }
+    }
+  }
 }
 
 class Answer {

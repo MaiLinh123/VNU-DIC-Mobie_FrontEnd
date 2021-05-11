@@ -12,9 +12,12 @@ class WordCardContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final title = CardTitle(word: this.word);
     final List<Widget> contents = [];
+
     for (final meaning in this.word.meanings) {
+
       contents.add(
         Text(
           'Mean (${meaning.partOfSpeech})',
@@ -25,7 +28,9 @@ class WordCardContent extends StatelessWidget {
           ),
         ),
       );
+
       contents.add(Text('  - ${meaning.definition}\n'));
+
       if (meaning.example != null) {
         contents.add(
           Text(
@@ -41,6 +46,7 @@ class WordCardContent extends StatelessWidget {
           Text('  - ${meaning.example}\n'),
         );
       }
+
       if (meaning.synonyms != null) {
         contents.add(
           Text(

@@ -13,10 +13,19 @@ class AppLoading extends StatelessWidget {
 }
 
 void showToast(String message, int statusCode) {
+  Fluttertoast.cancel();
   Fluttertoast.showToast(
       msg: message,
       gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 2,
       backgroundColor: statusCode == 200 ? Colors.green[400] : Colors.red[400],
       fontSize: 12);
 }
+
+// void checkQuiz(bool result) {
+//   Fluttertoast.cancel();
+//   Fluttertoast.showToast(
+//       msg: message,
+//       gravity: ToastGravity.,
+//       backgroundColor: statusCode == 200 ? Colors.green[400] : Colors.red[400],
+//       fontSize: 12);
+// }

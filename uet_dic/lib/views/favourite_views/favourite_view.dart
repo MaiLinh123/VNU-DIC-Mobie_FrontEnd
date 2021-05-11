@@ -14,15 +14,13 @@ class FavouriteView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final _appBar = MyAppBar(title: 'Favourite');
-
-    final User _currentUser =  Provider.of<AuthenticateController>(context, listen: false).currentUser;
+    final User currentUser =  Provider.of<AuthenticateController>(context, listen: false).currentUser;
 
     return FutureBuilder<List<Word>>(
 
       initialData: [],
 
-      future: _currentUser.getFavouriteListByID(),
+      future: currentUser.getFavouriteListByID(),
 
       builder: (context, AsyncSnapshot snap) {
 
@@ -52,22 +50,20 @@ class FavouriteView extends StatelessWidget {
           },
         );
 
-        final _favouriteViewBody = AppBackGround(
-          aboveBackground: Padding(
-            padding: const EdgeInsets.fromLTRB(30, 25, 30, 0),
-            child: AppCard(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                child: favouriteWordListTitle,
+        return Scaffold(
+          resizeToAvoidBottomInset: false,
+          appBar: MyAppBar(title: 'Favourite'),
+          body: AppBackGround(
+            aboveBackground: Padding(
+              padding: const EdgeInsets.fromLTRB(25, 25, 25, 0),
+              child: AppCard(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                  child: favouriteWordListTitle,
+                ),
               ),
             ),
           ),
-        );
-
-        return Scaffold(
-          resizeToAvoidBottomInset: false,
-          appBar: _appBar,
-          body: _favouriteViewBody,
         );
       },
     );

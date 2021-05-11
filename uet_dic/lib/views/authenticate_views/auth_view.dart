@@ -16,7 +16,7 @@ class AuthenticateView extends StatelessWidget {
 
     final _authenticateViewBody = AppBackGround(
       aboveBackground: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 50, 20, 0),
+        padding: const EdgeInsets.fromLTRB(25, 50, 25, 0),
         child: AppCard(
           child: this.loading ? AppLoading() :
           Padding(
