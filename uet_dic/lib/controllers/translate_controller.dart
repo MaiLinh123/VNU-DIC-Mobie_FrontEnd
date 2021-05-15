@@ -18,20 +18,17 @@ class TranslateController {
       print('Translating ...');
 
       final response = await http.get(
-        Uri.parse('${api.googleTranslateApi}?text=$text&tl=$tl&sl=$sl'),
-          headers: {
-            "x-rapidapi-host": "google-translate20.p.rapidapi.com",
-            "x-rapidapi-key": "abbc3a358fmsh669b0ad9ae76e82p1eb728jsnb3eb9cfd6b5d",
-          },
+        Uri.parse('${api.googleTranslateApi}&q=$text&source=$sl&target=$tl&format=text'),
       ).timeout(const Duration(seconds: 10));
 
       final responseBody = json.decode(response.body);
-      this._statusCode = responseBody['code'];
+      this._statusCode = responseBody['error'] == null ? 200 : 400;
+      print(responseBody['error']);
 
       if (this._statusCode != 200) this._message = 'Translate text fail';
       else {
         this._message = 'Translate text success';
-         translatedText = responseBody['data']['translation'];
+         translatedText = responseBody['data']['translations'][0]['translatedText'];
       }
     } catch (err) {
       this._message = 'Check your internet or try later';

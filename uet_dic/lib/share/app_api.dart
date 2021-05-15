@@ -18,4 +18,4 @@ final wordIDQueryApi = '$_api/word/query_id/';
 
 final userWordApi = '$_api/word/user-words';
 
-final googleTranslateApi = 'https://google-translate20.p.rapidapi.com/translate';
+final googleTranslateApi = 'https://translation.googleapis.com/language/translate/v2?key=AIzaSyBxqV2ta8EmLMWhc2xWGfhq1EaZAHGBGig';
