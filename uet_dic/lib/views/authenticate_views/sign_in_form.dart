@@ -1,21 +1,19 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:keyboard_avoider/keyboard_avoider.dart';
 import 'package:provider/provider.dart';
 
 import 'package:uet_dic/controllers/authenticate_controller.dart';
-import 'package:uet_dic/share/app_background.dart';
-import 'package:uet_dic/share/app_card.dart';
 import 'package:uet_dic/share/app_loading.dart';
-import 'package:uet_dic/views/authenticate_views/authShare.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:uet_dic/share/app_logo.dart';
+import 'package:uet_dic/views/authenticate_views/auth_components/auth_button.dart';
 
-class SignInScreen extends StatefulWidget {
+import 'auth_components/auth_text_form_field.dart';
+
+class SignInForm extends StatefulWidget {
   @override
-  _SignInScreenState createState() => _SignInScreenState();
+  _SignInFormState createState() => _SignInFormState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _SignInFormState extends State<SignInForm> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -26,11 +24,10 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     if (_loading) return AppLoading();
 
-    print('Sign In Screen');
     final _authenticateController =
-        Provider.of<AuthenticateController>(context);
+        Provider.of<AuthenticateController>(context, listen: false);
 
-    final _emailField = myTextFormField(
+    final _emailField = AuthTextFormField(
       controller: _emailController,
       validator: (value) {
         if (value.isEmpty) return "Please enter your email";
@@ -39,7 +36,7 @@ class _SignInScreenState extends State<SignInScreen> {
       iconData: Icons.email_rounded,
       hintText: "Enter email",
     );
-    final _passwordField = myTextFormField(
+    final _passwordField = AuthTextFormField(
       obscureText: true,
       controller: _passwordController,
       validator: (value) {
@@ -50,83 +47,66 @@ class _SignInScreenState extends State<SignInScreen> {
       hintText: "Enter password",
     );
 
+    print('Sign In Screen');
+
     final _signInButton = Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        myElevatedButton(
+        AuthButton(
           child: Text('Sign in'),
           onPressed: () async {
             if (_formKey.currentState.validate()) {
               setState(() => this._loading = true);
-              Map<String, dynamic> result =
+              int statusCode =
                   await _authenticateController.signInWithEmailAndPassword(
                       _emailController.text, _passwordController.text);
-              if (result['statusCode'] != 200) {
-                setState(() {
-                  this._loading = false;
-                });
-              }
+              if (statusCode != 200) setState(() => this._loading = false);
             }
           },
         ),
         Text('or'),
         // start now button
-        myElevatedButton(
+        AuthButton(
           child: Text('Start now'),
           onPressed: () async {
             setState(() => this._loading = true);
-            Map<String, dynamic> result =
-                await _authenticateController.signInAnonymously();
-            if (result['statusCode'] != 200) {
-              setState(() {
-                this._loading = false;
-              });
-            }
+            int statusCode = await _authenticateController.signInAnonymously();
+            if (statusCode != 200) setState(() => this._loading = false);
           },
         ),
       ],
     );
-    final _signUpButton = myElevatedButton(
+    final _signUpButton = AuthButton(
       child: Text('Create New Account'),
-      onPressed: () {
-        Navigator.pushNamed(context, '/signup');
+      onPressed: () async {
+        final result = await Navigator.pushNamed(context, '/signup');
+        if (result != null) _emailController.text = result;
       },
     );
-    final _signInForm = Form(
+
+    return Form(
       key: _formKey,
       child: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
+          SizedBox(height: 20),
+          AppLogo(),
+          SizedBox(height: 50),
           _emailField,
           SizedBox(height: 10),
           _passwordField,
           SizedBox(height: 23),
           _signInButton,
-          SizedBox(height: 10),
-          Divider(color: Colors.grey[800]),
-          SizedBox(height: 10),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 60),
-            child: _signUpButton,
+            padding: const EdgeInsets.all(10.0),
+            child: Divider(color: Colors.grey[800]),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [_signUpButton],
+          )
         ],
       ),
     );
-    final _signInBody = AppBackGround(
-      aboveBackground: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 50, 20, 0),
-        child: KeyboardAvoider(
-          child: AppCard(
-              child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
-                  child: _signInForm)),
-        ),
-      ),
-    );
-
-      return Scaffold(
-          resizeToAvoidBottomInset: false,
-          backgroundColor: Colors.white,
-          body: _signInBody);
   }
 }

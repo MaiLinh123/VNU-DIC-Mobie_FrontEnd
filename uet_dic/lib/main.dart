@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uet_dic/controllers/word_controller.dart';
-import 'package:uet_dic/share/app_loading.dart';
-import 'package:uet_dic/views/authenticate_views/sign_in_view.dart';
-import 'package:uet_dic/views/authenticate_views/sign_up_view.dart';
+import 'package:uet_dic/share/app_bar.dart';
+import 'package:uet_dic/views/authenticate_views/auth_view.dart';
+import 'package:uet_dic/views/authenticate_views/change_pass_form.dart';
+import 'package:uet_dic/views/authenticate_views/sign_up_form.dart';
+import 'package:uet_dic/views/favourite_views/favourite_view.dart';
+import 'package:uet_dic/views/profile_views/profile.dart';
+import 'package:uet_dic/views/quiz_views/quiz_view.dart';
+import 'package:uet_dic/views/text_translate_views/translate_view.dart';
 import 'package:uet_dic/views/wrapper_screen.dart';
-import 'package:uet_dic/views/drawer_components//profile.dart';
-import 'package:uet_dic/views/drawer_components/setting.dart';
 
 import 'controllers/authenticate_controller.dart';
 
@@ -17,20 +20,24 @@ void main() async {
 class UDictApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    print('Welcome');
     return MultiProvider(
       providers: [
+        /// AuthenticateController wil notify if the current user has changed
         ChangeNotifierProvider(create: (_) => AuthenticateController()),
+        /// WordController will notify recent words list as long as new word was searched
         ChangeNotifierProvider(create: (_) => WordController())
       ],
       child: MaterialApp(
         initialRoute: '/',
         routes: {
           '/': (context) => ScreenWrapper(),
-          '/signin': (context) => SignInScreen(),
-          '/signup': (context) => SignUpScreen(),
-          '/setting': (context) => Setting(),
+          '/favourite': (context) => FavouriteView(),
           '/profile': (context) => Profile(),
-          '/loading': (context) => AppLoading(),
+          '/translate': (context) => TextTranslate(),
+          '/signup': (context) => AuthenticateView(child: SignUpForm()),
+          '/updatepassword': (context) => AuthenticateView(appBar: MyAppBar(title: 'Update password'),child: ChangePasswordForm()),
+          '/quiz': (context) => QuizView(),
         },
       ),
     );
